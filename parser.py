@@ -30,6 +30,9 @@ class PlinkParser (HTMLParser):
         elif tag == "body":
             self.inBody = True
             self.getContent = True
+        elif tag == "br":
+            self.getContent = True
+            self.newline = True
         elif tag == "script" or tag == "style" or tag == "link" or tag == "meta":
             self.getContent = False
         else:
@@ -45,6 +48,8 @@ class PlinkParser (HTMLParser):
             self.isTitle = False
         elif tag == "body":
             self.inBody = False
+        elif tag == "br":
+            self.newline = False
 
     def handle_data (self, data):
         #print ("Data    :", data)
@@ -53,6 +58,8 @@ class PlinkParser (HTMLParser):
             self.construct_link()
         elif self.isTitle:
             self.title = data        
+        elif self.newline:
+            self.content += "\n"
         else:
             if self.getContent:
                 self.content += data
