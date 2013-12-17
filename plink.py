@@ -37,6 +37,8 @@ def lineify (parser):
     return lines
 
 def get_url (screen, parser):
+    curses.noecho()
+    curses.curs_set(0)
     parser.parse_html_at_url (parser.urls[-1])
 
     parser.content_lines = lineify (parser)
@@ -48,7 +50,7 @@ def get_url (screen, parser):
     for x in range (0, half_fill):
         title_line += " "
     title_line += parser.urls[-1] + " - " + parser.title
-    for x in range (0, half_fill):
+    for x in range (0, half_fill - 1):
         title_line += " "
     parser.title_line = title_line
     screen.addstr (0, 0, parser.title_line, curses.color_pair(2))
@@ -59,6 +61,8 @@ def get_url (screen, parser):
 
 def get_url_and_go (screen, parser):
     screen.addstr ( curses.LINES - 1, 0, "URL: ", curses.color_pair(3))
+    curses.echo()
+    curses.curs_set(1)
     screen.refresh()
     url = screen.getstr (curses.LINES - 1, 6, curses.COLS - 1 - 6)
     url = url.decode('utf-8')
@@ -97,6 +101,8 @@ def show_link_list (screen, parser):
         disp_str = "["+str(link_count)+"] "+href
         screen.addstr (link_count + 2, 0, disp_str)
         link_count += 1
+    curses.echo()
+    curses.curs_set(1)
     screen.refresh()
 
     screen.addstr ( curses.LINES - 1, 0, "Link: ", curses.color_pair(3))
