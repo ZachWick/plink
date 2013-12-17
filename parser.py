@@ -112,7 +112,6 @@ class PlinkParser (HTMLParser):
             self.content += alt
 
     def parse_html_at_url (self, url):
-        html = ''
         http_pool = urllib3.connection_from_url (url)
         del self.links[:]
         del self.images[:]

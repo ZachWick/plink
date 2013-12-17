@@ -33,6 +33,14 @@ def get_url (screen, parser):
     parser.maxLines = curses.LINES - 2
     next_page (screen, parser)
 
+def get_url_and_go (screen, parser):
+    screen.addstr ( curses.LINES - 1, 0, "URL: ", curses.color_pair(3))
+    screen.refresh()
+    url = screen.getstr (curses.LINES - 1, 6, curses.COLS - 1 - 6)
+    url = url.decode('utf-8')
+    parser.set_url (url)
+    get_url (screen, parser)
+    
 def next_page (screen, parser):
     screen.clear()
     screen.refresh()
@@ -67,7 +75,10 @@ def show_link_list (screen, parser):
         link_count += 1
     screen.refresh()
 
-    char = screen.getkey()
+    screen.addstr ( curses.LINES - 1, 0, "Link: ", curses.color_pair(3))
+    screen.refresh()
+    char = screen.getstr (curses.LINES - 1, 7, curses.COLS - 1 - 7)    
+
     (name, url) = parser.links[int(char)]
     parsed_link = urlparse (url)
 
@@ -122,8 +133,7 @@ def main ():
         elif key == "p":
             prev_page (screen, parser)
         elif key == "g":
-            pass
-            # "go" command
+            get_url_and_go (screen, parser)
         elif key == "l":
             show_link_list (screen, parser)
         elif key == "b":
