@@ -1,0 +1,20 @@
+A super simple, crappily coded, barebones python + ncurses web client
+
+The web is for linked content, and plink only deals with content.
+
+Copyright 2013 ZachWick
+Licensed under the GPLv3 or later
+
+How to use:
+    g -> enter a url to go to
+    l -> show a list of links on the current page
+      -> once in link list mode, enter the number of the link to go to it
+    n -> show the next page of content
+    p -> show the previous page of content
+    b -> go back to the previous URL
+    q -> quit plink
+
+Dependencies:
+    python3
+    python3-curses
+    python3-urllib3
