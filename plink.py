@@ -115,7 +115,9 @@ def main ():
 
     parser = PlinkParser()
     parser.maxLines = curses.LINES - 2
-    parser.set_url ("http://zachwick.com/")
+
+    #parser.set_url ("http://zachwick.com/")
+    parser.set_url ("http://duckduckgo.com")
 
     get_url (screen, parser)
         
