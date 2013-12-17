@@ -1,8 +1,28 @@
 from html.parser import HTMLParser
 from html.entities import name2codepoint
 import urllib3
+from urllib.parse import urlparse
 
 class PlinkParser (HTMLParser):
+
+    def __init__(self):
+        HTMLParser.__init__(self)
+        self.title    = ""
+        self.links    = []
+        self.images   = []
+        self.urls     = []
+        self.href     = ""
+        self.data     = ""
+        self.src      = ""
+        self.alt      = ""
+        self.content  = ""
+        self.isLink   = False
+        self.isImg    = False
+        self.isTitle  = False
+        self.inBody   = False
+        self.newline  = False
+        self.lastLine = 0
+
     def handle_starttag (self, tag, attrs):
         #print ("Start tag:", tag)
         #for attr in attrs:
@@ -84,15 +104,32 @@ class PlinkParser (HTMLParser):
     def construct_link (self):
         self.links.append( (self.data, self.href) )
         if self.getContent:
-            self.content += self.data
+            self.content += self.data + " ["+str(len(self.links))+"] "+"("+self.href+")"
 
     def construct_image (self):
         self.images.append( (self.alt, self.src) )
         if self.getContent:
             self.content += alt
 
-    def parse_html_at_url (parser, url):
+    def parse_html_at_url (self, url):
         html = ''
         http_pool = urllib3.connection_from_url (url)
+        del self.links[:]
+        del self.images[:]
+        self.href     = ""
+        self.data     = ""
+        self.src      = ""
+        self.alt      = ""
+        self.content  = ""
+        self.isLink   = False
+        self.isImg    = False
+        self.isTitle  = False
+        self.inBody   = False
+        self.newline  = False
+        self.lastLine = 0
         r = http_pool.urlopen ('GET', url)
-        parser.feed (r.data.decode('utf-8'))
+        self.feed (r.data.decode('utf-8'))
+
+    def set_url (self, url):
+        self.location = urlparse(url)
+        self.urls.append (url)
