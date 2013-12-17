@@ -34,6 +34,8 @@ def get_url (screen, parser):
     next_page (screen, parser)
 
 def next_page (screen, parser):
+    screen.clear()
+    screen.refresh()
     for line in range (parser.lastLine, parser.maxLines):
         if line < len(parser.content_lines) - 1:
             screen.addstr ((line % (curses.LINES - 2)) + 1, 0, parser.content_lines[line])
@@ -41,6 +43,18 @@ def next_page (screen, parser):
     screen.refresh()
     parser.lastLine += curses.LINES - 2
     parser.maxLines += parser.maxLines
+
+def prev_page (screen, parser):
+    screen.clear()
+    screen.refresh()
+    for line in range (parser.lastLine - (2 * (curses.LINES - 2)), parser.lastLine - curses.LINES - 2):
+        if line >= 0 and line < len(parser.content_lines) - 1:
+            screen.addstr ((line % (curses.LINES - 2)) + 1, 0, parser.content_lines[line])
+    screen.addstr (0, 0, parser.title_line, curses.color_pair(2))
+    screen.refresh()
+    parser.lastLine -= curses.LINES - 2
+    parser.maxLines -= max(parser.maxLines, curses.LINES - 2)
+        
 
 def show_link_list (screen, parser):
     screen.clear()
@@ -105,6 +119,8 @@ def main ():
             exit()
         elif key == "n":
             next_page (screen, parser)
+        elif key == "p":
+            prev_page (screen, parser)
         elif key == "g":
             pass
             # "go" command
