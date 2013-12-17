@@ -127,7 +127,7 @@ class PlinkParser (HTMLParser):
     def construct_link (self):
         self.links.append( (self.data, self.href) )
         if self.getContent:
-            self.content += self.data + " ["+str(len(self.links))+"] "+"("+self.href+")"
+            self.content += self.data + " ["+str(len(self.links)-1)+"] "+"("+self.href+")"
 
     def construct_image (self):
         self.images.append( (self.alt, self.src) )
