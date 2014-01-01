@@ -25,6 +25,10 @@ along with plink.  If not, see <http://www.gnu.org/licenses/>.
 import curses
 from parser import PlinkParser
 from urllib.parse import urlparse, urlunparse
+from sys import argv, exit, stderr
+
+import os
+import argparse
 
 def setup_color_pairs ():
     # color pair id, text color, background color
@@ -133,8 +137,7 @@ def go_back (screen, parser):
         pass
     get_url (screen, parser)
     
-
-def main ():
+def start_ncurses (parser):
     screen = curses.initscr()
     curses.start_color()
     setup_color_pairs()
@@ -143,14 +146,13 @@ def main ():
     screen.keypad (True)
     curses.curs_set(0)
 
-    parser = PlinkParser()
     parser.maxLines = curses.LINES - 2
 
     #parser.set_url ("http://zachwick.com/")
     parser.set_url ("http://duckduckgo.com")
 
     get_url (screen, parser)
-        
+
     while True:
         key = screen.getkey()
         if key == "q":
@@ -171,5 +173,19 @@ def main ():
         elif key == "b":
             go_back (screen, parser)
 
+def main ():
+    arg_parser = argparse.ArgumentParser (
+        description='A python web client/parser with an optional ncurses frontend')
+    arg_parser.add_argument (
+        '-n', '--ncurses', default=False, action='store_true',
+        help='Turn on the ncurses frontend')
+
+    args = arg_parser.parse_args (argv[1:])
+
+    parser = PlinkParser()
+
+    if args.__dict__.get ('ncurses', False) == True:
+        start_ncurses (parser)
+        
 if __name__ == "__main__":    
     main()
