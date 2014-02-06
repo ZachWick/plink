@@ -180,18 +180,15 @@ def main ():
         '-n', '--ncurses', default=False, action='store_true',
         help='Turn on the ncurses frontend')
     arg_parser.add_argument (
-        '-s', '--startpage', default=False, action="store_true",
+        '-s', '--startpage', action="store", dest="start_url",
         help="URL to start at; Either for browsing or crawling")
-    arg_parser.add_argument('start_url',
-                             help='an integer for the accumulator')
 
     args = arg_parser.parse_args()
 
     parser = PlinkParser()
 
-    if args.__dict__.get ('startpage', False) == True:
+    if args.start_url:
         parser.start_url = args.start_url
-        print (args.start_url)
 
     if args.__dict__.get ('ncurses', False) == True:
         start_ncurses (parser)
