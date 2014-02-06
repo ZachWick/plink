@@ -149,7 +149,7 @@ def start_ncurses (parser):
     parser.maxLines = curses.LINES - 2
 
     #parser.set_url ("http://zachwick.com/")
-    parser.set_url ("http://duckduckgo.com")
+    parser.set_url (parser.start_url)
 
     get_url (screen, parser)
 
@@ -179,10 +179,19 @@ def main ():
     arg_parser.add_argument (
         '-n', '--ncurses', default=False, action='store_true',
         help='Turn on the ncurses frontend')
+    arg_parser.add_argument (
+        '-s', '--startpage', default=False, action="store_true",
+        help="URL to start at; Either for browsing or crawling")
+    arg_parser.add_argument('start_url',
+                             help='an integer for the accumulator')
 
-    args = arg_parser.parse_args (argv[1:])
+    args = arg_parser.parse_args()
 
     parser = PlinkParser()
+
+    if args.__dict__.get ('startpage', False) == True:
+        parser.start_url = args.start_url
+        print (args.start_url)
 
     if args.__dict__.get ('ncurses', False) == True:
         start_ncurses (parser)
