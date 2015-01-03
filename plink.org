@@ -1,0 +1,24 @@
+#+AUTHOR zach wick <zach@zachwick.com>
+#+TITLE plink bugs/features/notes
+
+* BUGS/CHANGES
+** TODO can use [n]/[p] to page outside of the content
+*** TODO if you page to before the content, you cannot get back to it
+*** TODO if you page past the content, you can get back to it (sometimes)
+**** quantify/clarify sometimes
+
+* FEATURE REQUESTS
+** TODO make a way to use <input> tags
+*** eg. make it so that the user can enter text into the DDG search box
+
+* NOTES
+** What is the upgrade path to Python 3 (currently using 2.7.*)
+*** urllib changes
+**** some classes are combined
+**** investigate
+*** htmlparse changes
+**** investigate
+*** python-ncurses changes
+**** investigate
+*** is it even worth changing to python 3?
+
