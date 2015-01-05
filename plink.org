@@ -13,6 +13,7 @@
 *** eg. make it so that the user can enter text into the DDG search box
 ** TODO add a help menu/screen of some kind
 *** probably bind to "?" and just show a list of keys and their bindings
+** TODO add a keybinding to "i" to list all images on a page
 
 * NOTES
 ** What is the upgrade path to Python 3 (currently using 2.7.*)
