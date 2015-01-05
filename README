@@ -2,7 +2,7 @@ A super simple, crappily coded, barebones python + ncurses web client
 
 The web is for linked content, and plink only deals with content.
 
-Copyright 2013 ZachWick
+Copyright 2013, 2014, 2015 ZachWick
 Licensed under the GPLv3 or later
 
 How to use:

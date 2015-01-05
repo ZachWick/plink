@@ -3,7 +3,7 @@
 '''
 plink - a super simple web browser
 
-Copyright 2013 ZachWick <zach@zachwick.com>
+Copyright 2013, 2014, 2015 ZachWick <zach@zachwick.com>
 
 This file is part of plink.
 
