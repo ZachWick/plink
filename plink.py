@@ -76,14 +76,34 @@ def get_url_and_go (screen, parser):
 def next_page (screen, parser):
     screen.clear()
     screen.refresh()
+
+    logfile = open('logfile.txt', 'w')
+    
+    
     for line in range (parser.lastLine, parser.maxLines):
         if line < len(parser.content_lines) - 1:
+            logfile.write("line: " + str(line) + " | " + parser.content_lines[line]+ '\n')
             screen.addstr ((line % (curses.LINES - 2)) + 1, 0, parser.content_lines[line])
+
     screen.addstr (0, 0, parser.title_line, curses.color_pair(2))
     screen.refresh()
-    parser.lastLine += curses.LINES - 2
-    parser.maxLines += parser.maxLines
 
+    if parser.lastLine != 0:
+        parser.firstLine = parser.lastLine
+        parser.lastLine  = min(len(parser.content_lines), parser.lastLine + parser.maxLines)
+        parser.maxLines  += parser.maxLines
+    
+    if parser.firstLine == 0:
+        parser.lastLine = parser.maxLines
+        parser.maxLines += parser.maxLines
+        
+    logfile.write ("content_lines: " + str(len(parser.content_lines)) + ' \n')
+    logfile.write ("firstLine: " + str(parser.firstLine) + ' \n')
+    logfile.write ("lastLine: " + str(parser.lastLine) + ' \n')
+    logfile.write ("maxLines: " + str(parser.maxLines) + ' \n')
+
+    logfile.close()
+    
 def prev_page (screen, parser):
     screen.clear()
     screen.refresh()
@@ -136,6 +156,12 @@ def go_back (screen, parser):
     else:
         pass
     get_url (screen, parser)
+
+def DEBUG_stop_ncurses (screen):
+    curses.nocbreak()
+    screen.keypad (False)
+    curses.echo()
+    curses.endwin()
     
 def start_ncurses (parser):
     screen = curses.initscr()
@@ -147,7 +173,7 @@ def start_ncurses (parser):
     curses.curs_set(0)
 
     parser.maxLines = curses.LINES - 2
-
+    
     #parser.set_url ("http://zachwick.com/")
     parser.set_url (parser.start_url)
 

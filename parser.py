@@ -45,6 +45,7 @@ class PlinkParser (HTMLParser):
         self.newline    = False
         self.getContent = False
         self.lastLine   = 0
+        self.firstLine  = 0
         self.start_url  = "http://duckduckgo.com"
 
     def handle_starttag (self, tag, attrs):

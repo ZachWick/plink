@@ -1,0 +1,60 @@
+line: 56 | 	2013-05-02
+line: 57 | 	  Google Glass
+line: 58 | 	  Seems Awesome, But... [18] (posts/google_glass_seems_awesome_but.html)
+line: 59 | 	
+line: 60 | 	2013-04-23
+line: 61 | 	  How
+line: 62 | 	  to Install GNU Icecat on Debian Wheezy [19] (posts/how_to_install_gnu_icecat_on_debian_wheezy.html)
+line: 63 | 	
+line: 64 | 	2013-04-09 
+line: 65 | 	  LibrePlanet 2013 [20] (posts/libreplanet_2013.html)
+line: 66 | 	
+line: 67 | 	2013-02-06
+line: 68 | 	  Developers and
+line: 69 | 	  FOSS [21] (posts/developers_and_foss.html)
+line: 70 | 	
+line: 71 | 	2012-12-04
+line: 72 | 	  Owning Devices [22] (posts/owning_devices.html)
+line: 73 | 	
+line: 74 | 	2012-11-14
+line: 75 | 	  The
+line: 76 | 	  Evolution of my Dev Setup [23] (posts/the_evolution_of_my_dev_setup.html)
+line: 77 | 	
+line: 78 | 	2012-09-23
+line: 79 | 	  An
+line: 80 | 	  Update on 'A Day Using Only FOSS' [24] (posts/an_update_on_a_day_using_only_foss.html)
+line: 81 | 	
+line: 82 | 	2012-09-20
+line: 83 | 	  Ann Arbor Give
+line: 84 | 	  Camp 2012 [25] (posts/ann_arbor_give_camp_2012.html)
+line: 85 | 	
+line: 86 | 	2012-08-29
+line: 87 | 	  A Day Using Only
+line: 88 | 	  FOSS [26] (posts/a_day_using_only_foss.html)
+line: 89 | 	
+line: 90 | 	2012-07-30
+line: 91 | 	  I Hope to
+line: 92 | 	  Someday Own a Monopoly [27] (posts/i_hope_to_someday_own_a_monopoly.html)
+line: 93 | 	
+line: 94 | 	2012-07-12
+line: 95 | 	  Why
+line: 96 | 	  Don't Shipping Companies Have Better Delivery Estimates [28] (posts/why_dont_shipping_companies_have_better_delivery_estimates.html)
+line: 97 | 	
+line: 98 | 	2012-07-12
+line: 99 | 	  Using
+line: 100 | 	  GNU/Linux == Assembling Your Own Ammunition [29] (posts/using_gnu_linux_==_assembling_your_own_ammunition.html)
+line: 101 | 	
+line: 102 | 	2012-06-27
+line: 103 | 	  What
+line: 104 | 	  is This 'Sublime Text 2' Hullaballo? [30] (posts/what_is_this_sublime_text_2_hullaballo.html)
+line: 105 | 	
+line: 106 | 	2012-06-19
+line: 107 | 	  Just
+line: 108 | 	  Picked a Whole Bouqet of Oopsie Daisies [31] (posts/just_picked_a_whole_bouquet_of_oopsie_daisies.html)
+line: 109 | 	
+line: 110 |   
+line: 111 |   
+content_lines: 113 
+firstLine: 56 
+lastLine: 113 
+maxLines: 224 
